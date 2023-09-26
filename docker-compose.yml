@@ -5,7 +5,7 @@ services:
     build: Docker/
     image: ros_humble_image
     container_name: ros_app_humble
-    user: ros_foxy
+    user: ros_humble
     network_mode: host
     ipc: host
     volumes:

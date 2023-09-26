@@ -2,7 +2,7 @@
 
 set -e
 
-source /opt/ros/foxy/setup.bash
+source /opt/ros/humble/setup.bash
 
 echo "Provided arguments: $@"
 
