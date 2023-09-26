@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ros_app:
+    build: Docker/
+    image: ros_humble_image
+    container_name: ros_app_humble
+    user: ros_foxy
+    network_mode: host
+    ipc: host
+    volumes:
+      - ./App:/App
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+    stdin_open: true
+    tty: true
