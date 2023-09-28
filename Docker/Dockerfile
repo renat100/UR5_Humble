@@ -18,6 +18,11 @@ RUN apt-get update \
   && chmod 0440 /etc/sudoers.d/$USERNAME \
   && rm -rf /var/lib/apt/lists/*
 
+# Installazione x ping
+RUN apt update && sudo apt upgrade; \
+  apt install iputils-ping \
+  && rm -rf /var/lib/apt/lists/*
+
 #Installare le dipendenze necessarie x compilare UR_driver
 RUN mkdir -p /Src_for_dep_driver/src/
 COPY src /Src_for_dep_driver/src

@@ -29,10 +29,11 @@ colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 
 
-# Solo posa corrente su RVIZ
-ros2 launch ur_bringup ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 use_fake_hardware:=true launch_rviz:=true
+# Solo posa corrente su RVIZ OK
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 launch_rviz:=true
+# NB x fake hw aggiungere argomento: use_fake_hardware:=true
 
-# Esegue traiettoria pianificata da Moveit (servono entrambi su terminali diversi)
-ros2 launch ur_bringup ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 launch_rviz:=false
-ros2 launch ur_bringup ur_moveit.launch.py ur_type:=ur5 robot_ip:="192.168.1.102 launch_rviz:=true 
-# add use_fake_hardware:=true per escludere robot reale
+# Dovrebbe eseguire traiettoria pianificata da Moveit (servono entrambi su terminali diversi)
+# ok posa robot, ok pianificazione ma fallisce esecuzione
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 launch_rviz:=false
+ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur5 launch_rviz:=true
