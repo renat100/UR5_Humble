@@ -1,8 +1,9 @@
 #! /bin/bash
 
-set -e
+#Build sorgente ROS
+colcon build
 
-source /opt/ros/humble/setup.bash
+set -e
 
 echo "Provided arguments: $@"
 

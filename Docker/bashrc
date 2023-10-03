@@ -1,1 +1,2 @@
 source /opt/ros/humble/setup.bash
+source /App/install/setup.bash
