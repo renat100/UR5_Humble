@@ -37,3 +37,5 @@ ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.
 # ok posa robot, ok pianificazione ma fallisce esecuzione
 ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 launch_rviz:=false
 ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur5 launch_rviz:=true
+
+initial_joint_controller:=joint_trajectory_controller
