@@ -53,3 +53,22 @@ ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.
 ros2 launch ur_moveit_config ur_moveit.launch.py ur_type:=ur5 launch_rviz:=true
 ```
 initial_joint_controller:=joint_trajectory_controller
+
+# URScript
+
+Eseguendo il driver, viene mandato in esecuzione il nodo "urscript_interface"
+```
+ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 robot_ip:=192.168.1.102 launch_rviz:=false
+```
+Si possono mandare i comandi pubblicando sul topic /urscript_interface/script_command delle stringhe (std_msgs/msg/String che ha solo il campo string data)
+
+Esempi
+Crea un popup sul Teach Pendant
+```
+ros2 topic pub /urscript_interface/script_command std_msgs/msg/String '{data: popup("hello")}' --once
+```
+Comando movej (raggiunge pos dei giunti in rad specificata con profilo trap)
+NOTA: CONTROLLARE ORDINE DEI GIUNTI tra topic /joint_states e movej
+```
+ros2 topic pub /urscript_interface/script_command std_msgs/msg/String '{data: "movej([-1.01, -2.02, -1.9, 1.6, 0.03, 0.027], a=1.2, v=0.25, r=0)"}' --once
+```
